@@ -7,6 +7,7 @@ import 'package:ticketapp/presentation/screen/dashboard_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:ticketapp/presentation/screen/home_screen.dart';
 import 'package:ticketapp/presentation/screen/onboarding_screen.dart';
+import 'package:ticketapp/presentation/screen/splash_screen.dart';
 
 void main() async{
 
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ConnectionStatusWrapper(child: const OnboardingScreen()),
+      home: ConnectionStatusWrapper(child: const SplashScreen()),
     );
   }
 }

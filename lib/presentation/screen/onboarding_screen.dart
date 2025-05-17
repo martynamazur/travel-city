@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:ticketapp/presentation/screen/home_screen.dart';
+import 'package:ticketapp/presentation/screen/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -13,20 +14,25 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final _pageController = PageController();
   final _pageCount = 3;
+  int _currentPage = 0;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(32.0),
             child: Column(
               children: [
                 Expanded(
                   child: PageView(
                     controller: _pageController,
-                    physics: NeverScrollableScrollPhysics(),
-                    onPageChanged: (value){},
+                    onPageChanged: (value){
+                      setState(() {
+                        _currentPage = value;
+                      });
+                    },
                     children: [
                       _buildIntroduction(),
                       _buildPurchasePageInf(),
@@ -42,26 +48,71 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildPageViewNavigation(){
-    return Row(
-      children: [
-        SmoothPageIndicator(
-          controller: _pageController,
-          count: _pageCount,
-          effect: ExpandingDotsEffect(),
-          onDotClicked: (index)
-          {
-            _pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.ease);
-          },
-        ),
-        TextButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (builder) => HomeScreen())), child: Text('Skip')),
-        IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward))
-      ],
+  Widget _buildPageViewNavigation() {
+    final isLastPage = _currentPage == _pageCount - 1;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (!isLastPage)
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => HomeScreen()),
+                );
+              },
+              child: Text('Skip'),
+            )
+          else
+            const SizedBox(width: 60),
+
+
+          SmoothPageIndicator(
+            controller: _pageController,
+            count: _pageCount,
+            effect: ExpandingDotsEffect(),
+            onDotClicked: (index) {
+              _pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            },
+          ),
+
+          // Next or Start button
+          if (!isLastPage)
+            IconButton(
+              onPressed: () {
+                _pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                );
+              },
+              icon: const Icon(Icons.arrow_forward),
+            )
+          else
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => LoginScreen()),
+                );
+              },
+              child: const Text('Start'),
+            ),
+        ],
+      ),
     );
   }
 
+
   Widget _buildIntroduction() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           height: 180,
@@ -77,6 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
   Widget _buildPaymentMethodInf() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           height: 180,
@@ -93,6 +145,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget _buildPurchasePageInf() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           height: 180,
