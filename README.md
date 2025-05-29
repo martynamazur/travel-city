@@ -1,16 +1,30 @@
-# ticketapp
+<img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Group%201.png" alt="Screenshot" width="50%">
 
-A new Flutter project.
+## Main study goals of the project:
+1) General flow of the payment process  
+2) Implementing payment by BLIK code using Tpay provider (Tpay Api, sandbox) 
+3) Implementing quick payment via Google Pay (Package: pay)
+4) How the QR code works underneath
+5) Supabase : Login/Register - by phone number → setting SMS provider (Vonage) for authentication
 
-## Getting Started
+## Things I was trying to figure out for the first time:
+1) PopScope – to show a dialog before exiting/canceling the process of buying a ticket
+2) Package: flutter_windowmanager_plus – to disable screenshot and recording functions 
+3) Package: screen_brightness  - to set screen brightness on TicketDetailsScreen
+4) Package: qr_flutter –  QR code rendering
 
-This project is a starting point for a Flutter application.
+## Backend
 
-A few resources to get you started if this is your first Flutter project:
+1. Built a Node.js middleware server to handle communication between the mobile app and external APIs.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Key responsibilities of the backend:
+- Verifies JWT tokens issued by Supabase to authorize users.
+- Stores activated tickets in a PostgreSQL database using `pg`.
+- Generates custom QR tokens using `jsonwebtoken`, which include expiration metadata.
+- Handles webhooks from Tpay to update transaction status in Supabase.
+- Implements a Google Pay integration endpoint to initiate secure payments via Tpay API.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2.Supabase – handles user authentication and store application data
+
+
+## App screens :
