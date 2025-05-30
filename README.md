@@ -27,7 +27,26 @@
 2.Supabase – handles user authentication and store application data
 
 
+### State managment : Riverpod(v2)
+
+
 ## App screens :
+
+<div style="display: flex;">
+  <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_144840.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+  <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_145129.jpg" alt="Screenshot 2" width="300" />
+</div>
+
+<div style="display: flex;">
+  <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_173940.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+  <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_173924.jpg" alt="Screenshot 2" width="300" />
+</div>
+
+<div style="display: flex;">
+  <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_173736.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+  <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_171813.jpg" alt="Screenshot 2" width="300" />
+</div>
+
 <div style="display: flex;">
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250527_183713.jpg" alt="Screenshot 1" width="300" />
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250527_183718.jpg" alt="Screenshot 2" width="300" />
@@ -47,3 +66,5 @@
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250529_142809.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250529_143818.jpg" alt="Screenshot 2" width="300" />
 </div>
+
+
