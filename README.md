@@ -67,4 +67,9 @@
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250529_143818.jpg" alt="Screenshot 2" width="300" />
 </div>
 
+<div style="display: flex;">
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250531_123228.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250531_123231.jpg" alt="Screenshot 1" alt="Screenshot 2" width="300" />
+</div>
+
 
