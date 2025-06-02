@@ -32,10 +32,18 @@
 
 ## App screens :
 
+Onboarding
+<div style="display: flex;">
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250602_193039.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+
+</div>
+
+SignIn/Up
 <div style="display: flex;">
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_144840.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_145129.jpg" alt="Screenshot 2" width="300" />
 </div>
+
 
 <div style="display: flex;">
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_173940.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
@@ -45,6 +53,11 @@
 <div style="display: flex;">
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_173736.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
   <img src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250530_171813.jpg" alt="Screenshot 2" width="300" />
+</div>
+
+<div style="display: flex;">
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250602_212905.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250602_201404.jpg" alt="Screenshot 1" alt="Screenshot 2" width="300" />
 </div>
 
 <div style="display: flex;">
@@ -71,5 +84,12 @@
   <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250531_123228.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
   <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250531_123231.jpg" alt="Screenshot 1" alt="Screenshot 2" width="300" />
 </div>
+
+<div style="display: flex;">
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250602_212927.jpg" alt="Screenshot 1" width="300" style="margin-right:10px;" />
+  <img  src="https://hhvriufzsfvhjtoijfsx.supabase.co/storage/v1/object/public/appscreenshot//Screenshot_20250602_212924.jpg" alt="Screenshot 1" alt="Screenshot 2" width="300" />
+</div>
+
+
 
 
