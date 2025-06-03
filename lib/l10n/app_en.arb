@@ -1,0 +1,103 @@
+{
+  "hello": "Hello there!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+
+  "buyTicket": "Buy ticket",
+  "yourTicket": "Your tickets",
+  "error": "Error",
+  "yourActiveTickets": "Your active tickets will appear here",
+  "addTicketInfo": "Once you add a ticket, it will be displayed here",
+  "mostBought": "Most bought",
+  "showAll": "Show all",
+  "start": "Start",
+  "skip": "Skip",
+  "onboardingWelcomeTitle": "Welcome to TravelCity!",
+  "onboardingWelcomeDescription": "Your public transport tickets — always within reach. Buy, manage, and travel with ease — no lines, no cash needed.",
+  "onboardingPaymentsTitle": "Secure and fast payments",
+  "onboardingPaymentsDescription": "We support BLIK, cards, Google Pay, and Apple Pay.",
+  "onboardingPurchaseTitle": "Buy tickets with one click",
+  "onboardingPurchaseDescription": "Choose a ticket, pay, and you're ready. You'll find the ticket immediately in the app.",
+  "buyAgain": "Buy again",
+  "ticketId": "Ticket id: ",
+  "status": "Status",
+  "active": "Active",
+  "history": "History",
+  "expired": "Expired",
+  "activeFrom": "Active from",
+  "expiredAt": "Expires at",
+  "price": "price",
+  "ticketAmount": "Ticket amount",
+  "regular": "Regular",
+  "activateTicketHeadline": "Scan QR code to activate your ticket",
+  "vehicleNotValidOrNotFound": "The vehicle does not match the ticket or was not found",
+  "invalidQrCode": "Invalid QR code",
+  "bottomNavHome": "Home",
+  "bottomNavTickets": "Tickets",
+  "bottomNavMenu": "Menu",
+  "loginTitle": "Log in and return \nto your adventure!",
+  "loginSubtitle": "Use your phone number to log in",
+  "continueHeadline": "Continue",
+  "somethingWentWrong": "Oops, something went wrong. Please try again.",
+  "fieldCannotBeEmpty": "This field cannot be empty",
+  "enterPhoneNumber": "Enter your phone number",
+  "menuPhoneNumberLabel": "My phone number : {phoneNumber}",
+  "menuWallet": "Wallet",
+  "menuSettings": "Settings",
+  "menuAboutApp": "About app",
+  "menuTermsAndConditions": "Terms and Conditions",
+  "menuSignOut": "Sign out",
+  "errorLogoutFailed": "Something went wrong while logging out",
+  "noActiveTicketsHeadline": "No active tickets",
+  "expiredTicketsInfo": "Your expired tickets will be visible here",
+  "verify": "Verify",
+  "didntReceiveCode": "Didn't receive the code yet?",
+  "phoneVerificationTitle": "Phone number verification",
+  "enterCodeSentToNumber": "Enter the code sent to the number: {phoneNumber}",
+
+  "unknownError": "An unknown error occurred",
+  "unknownErrorTooltip": "Something went wrong, but we're not sure what. Please try again later.",
+
+  "errorUnknown": "An unknown error occurred",
+  "invalidOtpCode": "Invalid verification code. Please try again.",
+  "logoutFailed": "Logout failed. Please try again.",
+  "mostBoughTicketHeadline" : "Most bough ticket",
+  "buyNewTicket": "Buy new ticket",
+  "city": "city",
+  "selectCity": "Select city",
+  "chooseCity": "Choose city",
+  "choosePaymentOption": "Choose payment option",
+  "next": "next",
+  "priceFor": "Price for",
+
+  "ticketPriceLabel": "{amount, plural, =1{Price for 1 ticket: {price} zł} other{Price for {amount} tickets: {price} zł}}",
+  "@ticketPriceLabel": {
+    "description": "Label showing ticket count and total price",
+    "placeholders": {
+      "amount": {
+        "type": "int"
+      },
+      "price": {
+        "type": "Object"
+      }
+    }
+  },
+  "chooseCategory": "Choose category",
+  "payment": "Payment",
+  "paymentOptions": "Payment Options",
+  "enterBlikCode": "Enter BLIK code",
+  "transactionStatus": "Transaction status",
+  "remaining": "Remaining: {formattedTime}",
+  "ticketTypeLabel": "{minutes} minut, {type, select, normal{normalny} reduced{ulgowy} other{nieznany}}",
+  "@ticketTypeLabel": {
+    "description": "Opis biletu: czas trwania i typ",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "type": {}
+    }
+  }
+
+}

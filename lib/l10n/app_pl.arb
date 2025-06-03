@@ -1,0 +1,102 @@
+{
+  "hello": "Cześć!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "buyTicket": "Kup bilet",
+  "yourTicket": "Twoje bilety",
+  "error": "Błąd",
+  "yourActiveTickets": "Twoje aktywne bilety pojawią się tutaj",
+  "addTicketInfo": "Po dodaniu biletu, pojawi się on tutaj",
+  "mostBought": "Najczęściej kupowane",
+  "showAll": "Pokaż wszystkie",
+  "start": "Start",
+  "skip": "Pomiń",
+  "onboardingWelcomeTitle": "Witamy w TravelCity!",
+  "onboardingWelcomeDescription": "Twoje bilety komunikacji miejskiej — zawsze pod ręką. Kupuj, zarządzaj i podróżuj z łatwością — bez kolejek i gotówki.",
+  "onboardingPaymentsTitle": "Bezpieczne i szybkie płatności",
+  "onboardingPaymentsDescription": "Obsługujemy BLIK, karty, Google Pay i Apple Pay.",
+  "onboardingPurchaseTitle": "Kupuj bilety jednym kliknięciem",
+  "onboardingPurchaseDescription": "Wybierz bilet, zapłać i gotowe. Bilet znajdziesz od razu w aplikacji.",
+  "buyAgain": "Kup ponownie",
+  "ticketId": "ID biletu: ",
+  "status": "Status",
+  "active": "Aktywny",
+  "history": "Historia",
+  "expired": "Wygasł",
+  "activeFrom": "Aktywny od",
+  "expiredAt": "Wygasa o",
+  "price": "Cena",
+  "ticketAmount": "Liczba biletów",
+  "regular": "Normalny",
+  "activateTicketHeadline": "Zeskanuj kod QR, aby aktywować bilet",
+  "vehicleNotValidOrNotFound": "Pojazd nie pasuje do biletu lub nie został znaleziony",
+  "invalidQrCode": "Nieprawidłowy kod QR",
+  "bottomNavHome": "Strona główna",
+  "bottomNavTickets": "Bilety",
+  "bottomNavMenu": "Menu",
+  "loginTitle": "Zaloguj się i wróć\ndo swojej przygody!",
+  "loginSubtitle": "Użyj numeru telefonu, aby się zalogować",
+  "continueHeadline": "Kontynuuj",
+  "somethingWentWrong": "Ups, coś poszło nie tak. Spróbuj ponownie.",
+  "fieldCannotBeEmpty": "To pole nie może być puste",
+  "enterPhoneNumber": "Wprowadź swój numer telefonu",
+  "menuPhoneNumberLabel": "Mój numer telefonu: {phoneNumber}",
+  "menuWallet": "Portfel",
+  "menuSettings": "Ustawienia",
+  "menuAboutApp": "O aplikacji",
+  "menuTermsAndConditions": "Regulamin",
+  "menuSignOut": "Wyloguj się",
+  "errorLogoutFailed": "Wystąpił błąd podczas wylogowywania",
+  "noActiveTicketsHeadline": "Brak aktywnych biletów",
+  "expiredTicketsInfo": "Twoje wygasłe bilety będą widoczne tutaj",
+  "verify": "Zweryfikuj",
+  "didntReceiveCode": "Nie otrzymałeś jeszcze kodu?",
+  "phoneVerificationTitle": "Weryfikacja numeru telefonu",
+  "enterCodeSentToNumber": "Wprowadź kod wysłany na numer: {phoneNumber}",
+  "unknownError": "Wystąpił nieznany błąd",
+  "unknownErrorTooltip": "Coś poszło nie tak, ale nie wiemy co. Spróbuj ponownie później.",
+  "errorUnknown": "Wystąpił nieznany błąd",
+  "invalidOtpCode": "Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie.",
+  "logoutFailed": "Wylogowanie nie powiodło się. Spróbuj ponownie.",
+  "mostBoughTicketHeadline": "Najczęściej kupowany bilet",
+  "buyNewTicket": "Kup nowy bilet",
+  "city": "Miasto",
+  "selectCity": "Wybierz miasto",
+  "chooseCity": "Wybierz miasto",
+  "choosePaymentOption": "Wybierz metodę płatności",
+  "next": "Dalej",
+  "priceFor": "Cena za",
+  "ticketPriceLabel": "{amount, plural, =1{Cena za 1 bilet: {price} zł} other{Cena za {amount} biletów: {price} zł}}",
+  "@ticketPriceLabel": {
+    "description": "Etykieta pokazująca liczbę biletów i łączną cenę",
+    "placeholders": {
+      "amount": {
+        "type": "int"
+      },
+      "price": {
+        "type": "Object"
+      }
+    }
+  },
+
+  "chooseCategory": "Wybierz kategorię",
+  "payment": "Płatność",
+  "paymentOptions": "Metody płatności",
+  "enterBlikCode": "Wprowadź kod BLIK",
+  "transactionStatus": "Status transakcji",
+  "remaining": "Pozostało: {formattedTime}",
+  "ticketTypeLabel": "{minutes} minut, {type, select, normal{normalny} reduced{ulgowy} other{nieznany}}",
+  "@ticketTypeLabel": {
+    "description": "Opis biletu: czas trwania i typ",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  }
+
+}

@@ -44,10 +44,10 @@ class _SplashScreenState extends State<SplashScreen> {
     final session = supabase.auth.currentSession;
 
     if (session != null) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) => HomeScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomeScreen()));
 
     } else {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) => LoginScreen()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
 
     }
   }
