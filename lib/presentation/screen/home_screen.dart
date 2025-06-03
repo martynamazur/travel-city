@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ticketapp/l10n/app_localizations.dart';
 import 'package:ticketapp/presentation/screen/dashboard_screen.dart';
-import 'package:ticketapp/presentation/screen/profile_screen.dart';
+import 'package:ticketapp/presentation/screen/menu_screen.dart';
 import 'package:ticketapp/presentation/screen/tickets_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,8 +18,16 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = const[
     DashboardScreen(),
     TicketsScreen(),
-    ProfileScreen()
+    MenuScreen()
   ];
+
+  late final AppLocalizations _loc;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loc = AppLocalizations.of(context)!;
+  }
 
 
   /*
@@ -41,15 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home'
+              label: _loc.bottomNavHome
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.confirmation_num),
-              label : 'Tickets'
+              label : _loc.bottomNavTickets
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile'
+              icon: Icon(Icons.menu_rounded),
+              label: _loc.bottomNavMenu
           )
         ],
           ),

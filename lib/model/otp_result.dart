@@ -1,7 +1,7 @@
-class OtpResult {
+class Result {
   final bool success;
   final String? errorMessage;
 
-  OtpResult.success() : success = true, errorMessage = null;
-  OtpResult.failure(this.errorMessage) : success = false;
+  Result.success() : success = true, errorMessage = null;
+  Result.failure(this.errorMessage) : success = false;
 }

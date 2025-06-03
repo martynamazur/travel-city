@@ -12,7 +12,7 @@ _Ticket _$TicketFromJson(Map<String, dynamic> json) => _Ticket(
   vehicleTypeId: (json['vehicle_type_id'] as num).toInt(),
   variantId: (json['variant_id'] as num).toInt(),
   name: json['name'] as String,
-  minutes: (json['minutes'] as num?)?.toInt(),
+  minutes: json['minutes'],
   price: (json['price'] as num).toDouble(),
 );
 

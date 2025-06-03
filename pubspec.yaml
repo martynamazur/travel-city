@@ -54,6 +54,17 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   flutter_windowmanager_plus: ^1.0.1
   shared_preferences: ^2.5.3
+  pay: ^3.2.1
+  mobile_scanner: ^7.0.0
+  qr_flutter: ^4.1.0
+  screen_brightness: ^2.1.3
+  intl: any
+  flutter_launcher_icons: ^0.14.3
+  pin_code_fields: ^8.0.1
+  sms_autofill: ^2.4.1
+  flutter_localizations:
+    sdk: flutter
+
 
 
 
@@ -77,6 +88,11 @@ dev_dependencies:
   drift_dev: ^2.26.1
 
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/app_icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -87,11 +103,17 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
   assets:
     - .env
     - assets/Blik_logo.jpg
     - assets/bus.png
     - assets/qr_test.png
+    - assets/google_pay_config.json
+    - assets/GPay_Acceptance_Mark_800.png
+    - assets/app_icon.png
+    - assets/login_picture.png
+    - assets/onboarding/illustration_screen2.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

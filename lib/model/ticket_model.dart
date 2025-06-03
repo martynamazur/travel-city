@@ -4,6 +4,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'ticket_model.freezed.dart';
 part 'ticket_model.g.dart';
 
+/*
+ Statyczny model biletu z bazy danych
+ */
 @freezed
 abstract class TicketM with _$TicketM {
   const factory TicketM({
@@ -12,7 +15,7 @@ abstract class TicketM with _$TicketM {
     @JsonKey(name:'vehicle_type_id') required int vehicleTypeId,
     @JsonKey(name:'variant_id') required int variantId,
     required String name,
-    int? minutes,
+    required minutes,
     required double price,
 
   }) = _Ticket;

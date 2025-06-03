@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ticketapp/connection_status_wrapper.dart';
-import 'package:ticketapp/data/provider/dio_provider.dart';
 import 'package:ticketapp/presentation/screen/dashboard_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:ticketapp/presentation/screen/home_screen.dart';
-import 'package:ticketapp/presentation/screen/onboarding_screen.dart';
 import 'package:ticketapp/presentation/screen/splash_screen.dart';
+import 'package:ticketapp/theme/app_theme.dart';
+
+import 'l10n/app_localizations.dart';
 
 void main() async{
 
@@ -39,10 +38,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: ConnectionStatusWrapper(child: const SplashScreen()),
+      theme:  lightTheme,
+      //darkTheme: darkTheme,
+      home: const SplashScreen(),
+      routes: {
+        '/dashboard': (context) => DashboardScreen(),
+      },
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: [
+        Locale('en'),
+        Locale('pl')
+      ],
     );
   }
 }

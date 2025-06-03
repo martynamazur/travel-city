@@ -24,7 +24,23 @@ final userRepositoryProvider = AutoDisposeProvider<UserRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef UserRepositoryRef = AutoDisposeProviderRef<UserRepository>;
-String _$sendOtpHash() => r'b10c1f73fa977ccc55a660cc438bfc6681285fee';
+String _$logOutHash() => r'4bffff6cba225581a821ca50a07207d0c8a15827';
+
+/// See also [logOut].
+@ProviderFor(logOut)
+final logOutProvider = AutoDisposeFutureProvider<Result>.internal(
+  logOut,
+  name: r'logOutProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$logOutHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LogOutRef = AutoDisposeFutureProviderRef<Result>;
+String _$sendOtpHash() => r'c8dae189b74e40c14c72b73e86df8fcdf0eceba7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -52,7 +68,7 @@ class _SystemHash {
 const sendOtpProvider = SendOtpFamily();
 
 /// See also [sendOtp].
-class SendOtpFamily extends Family<AsyncValue<bool>> {
+class SendOtpFamily extends Family<AsyncValue<Result>> {
   /// See also [sendOtp].
   const SendOtpFamily();
 
@@ -82,7 +98,7 @@ class SendOtpFamily extends Family<AsyncValue<bool>> {
 }
 
 /// See also [sendOtp].
-class SendOtpProvider extends AutoDisposeFutureProvider<bool> {
+class SendOtpProvider extends AutoDisposeFutureProvider<Result> {
   /// See also [sendOtp].
   SendOtpProvider({required String phoneNumber})
     : this._internal(
@@ -111,7 +127,7 @@ class SendOtpProvider extends AutoDisposeFutureProvider<bool> {
   final String phoneNumber;
 
   @override
-  Override overrideWith(FutureOr<bool> Function(SendOtpRef provider) create) {
+  Override overrideWith(FutureOr<Result> Function(SendOtpRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: SendOtpProvider._internal(
@@ -127,7 +143,7 @@ class SendOtpProvider extends AutoDisposeFutureProvider<bool> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<bool> createElement() {
+  AutoDisposeFutureProviderElement<Result> createElement() {
     return _SendOtpProviderElement(this);
   }
 
@@ -147,12 +163,12 @@ class SendOtpProvider extends AutoDisposeFutureProvider<bool> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin SendOtpRef on AutoDisposeFutureProviderRef<bool> {
+mixin SendOtpRef on AutoDisposeFutureProviderRef<Result> {
   /// The parameter `phoneNumber` of this provider.
   String get phoneNumber;
 }
 
-class _SendOtpProviderElement extends AutoDisposeFutureProviderElement<bool>
+class _SendOtpProviderElement extends AutoDisposeFutureProviderElement<Result>
     with SendOtpRef {
   _SendOtpProviderElement(super.provider);
 
@@ -160,14 +176,14 @@ class _SendOtpProviderElement extends AutoDisposeFutureProviderElement<bool>
   String get phoneNumber => (origin as SendOtpProvider).phoneNumber;
 }
 
-String _$verifyOtpHash() => r'd8bd1a98f3099406975b1ecf90580f2b52164978';
+String _$verifyOtpHash() => r'20a2c5f8a619ab1401360829ccadf9d6af16ce92';
 
 /// See also [verifyOtp].
 @ProviderFor(verifyOtp)
 const verifyOtpProvider = VerifyOtpFamily();
 
 /// See also [verifyOtp].
-class VerifyOtpFamily extends Family<AsyncValue<OtpResult>> {
+class VerifyOtpFamily extends Family<AsyncValue<Result>> {
   /// See also [verifyOtp].
   const VerifyOtpFamily();
 
@@ -197,7 +213,7 @@ class VerifyOtpFamily extends Family<AsyncValue<OtpResult>> {
 }
 
 /// See also [verifyOtp].
-class VerifyOtpProvider extends AutoDisposeFutureProvider<OtpResult> {
+class VerifyOtpProvider extends AutoDisposeFutureProvider<Result> {
   /// See also [verifyOtp].
   VerifyOtpProvider({required String phoneNumber, required String token})
     : this._internal(
@@ -234,7 +250,7 @@ class VerifyOtpProvider extends AutoDisposeFutureProvider<OtpResult> {
 
   @override
   Override overrideWith(
-    FutureOr<OtpResult> Function(VerifyOtpRef provider) create,
+    FutureOr<Result> Function(VerifyOtpRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -252,7 +268,7 @@ class VerifyOtpProvider extends AutoDisposeFutureProvider<OtpResult> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<OtpResult> createElement() {
+  AutoDisposeFutureProviderElement<Result> createElement() {
     return _VerifyOtpProviderElement(this);
   }
 
@@ -275,7 +291,7 @@ class VerifyOtpProvider extends AutoDisposeFutureProvider<OtpResult> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin VerifyOtpRef on AutoDisposeFutureProviderRef<OtpResult> {
+mixin VerifyOtpRef on AutoDisposeFutureProviderRef<Result> {
   /// The parameter `phoneNumber` of this provider.
   String get phoneNumber;
 
@@ -283,8 +299,7 @@ mixin VerifyOtpRef on AutoDisposeFutureProviderRef<OtpResult> {
   String get token;
 }
 
-class _VerifyOtpProviderElement
-    extends AutoDisposeFutureProviderElement<OtpResult>
+class _VerifyOtpProviderElement extends AutoDisposeFutureProviderElement<Result>
     with VerifyOtpRef {
   _VerifyOtpProviderElement(super.provider);
 

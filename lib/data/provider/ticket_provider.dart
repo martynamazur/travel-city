@@ -3,17 +3,21 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticketapp/data/provider/ticket_db_provider.dart';
 import 'package:ticketapp/data/provider/ticket_provider.dart';
 import 'package:ticketapp/data/repository/ticket_repository.dart';
+import 'package:ticketapp/model/payment_method.dart';
 
 import '../../model/city.dart';
 import '../../model/ticket_model.dart';
 import '../../model/ticket_user.dart';
 import '../../model/ticket_variant.dart';
+import '../../model/validation_result.dart';
 import '../../model/vehicle_type.dart';
 
 
 part 'ticket_provider.g.dart';
 
 final selectedCityProvider = StateProvider<City?>((ref) => null);
+
+final chosenPaymentMethodProvider = StateProvider<PaymentMethod>((ref) => PaymentMethod('assets/Blik_logo.jpg', 'blik', null));
 
 @riverpod
 TicketRepository ticketRepository(Ref ref) {
@@ -43,7 +47,7 @@ Future<List<VehicleType>> getVehicleList(Ref ref, {required int cityId}) async {
 }
 
 @riverpod
-Future<List<TicketVariant>> getTicketVariants(Ref ref, {required int cityId,}) async {
+Future<List<TicketVariant>> getTicketVariants(Ref ref, {required int cityId}) async {
   return ref.read(ticketRepositoryProvider).getTicketVariants(cityId) ;
 }
 
@@ -63,4 +67,9 @@ Future<List<TicketM>> getUserMostBoughTickets(Ref ref) async {
   if (ids.isEmpty) return [];
   final fullTickets = await supabaseRepo.getUserMostBoughTickets(ids);
   return fullTickets;
+}
+
+@riverpod
+Future<ValidationResult> vehicleExists(Ref ref, {required String vehicleFleetNumber, required int cityId}) async{
+  return ref.read(ticketRepositoryProvider).vehicleExists(vehicleFleetNumber,cityId);
 }

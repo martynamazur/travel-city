@@ -11,29 +11,26 @@ class UserRepository{
 
   /*
       Supabase
-
       Co się stanie?
       🔹  Nie istnieje w bazie	Supabase tworzy nowe konto
       🔹  Już istnieje	Supabase normalnie loguje użytkownika
    */
 
 
-  Future<bool> sendOtp(String phoneNumber) async{
+  Future<Result> sendOtp(String phoneNumber) async{
     try{
       await supabase.auth.signInWithOtp(phone: phoneNumber.toString());
-      return true;
-
+      return Result.success();
     }on AuthException catch(e){
       developer.log('AuthException (OTP): ${e.message}');
-      return false;
+      return Result.failure(e.message);
     }catch(e){
       developer.log('Błąd wysyłania OTP: $e');
-      return false;
-
+      return  Result.failure('errorUnknown');
     }
   }
 
-  Future<OtpResult> verifyOtp(String phoneNumber, String token) async {
+  Future<Result> verifyOtp(String phoneNumber, String token) async {
     try {
       final response = await supabase.auth.verifyOTP(
         phone: phoneNumber,
@@ -42,21 +39,47 @@ class UserRepository{
       );
 
       if (response.session != null && response.user != null) {
-        return OtpResult.success();
+        return Result.success();
       } else {
-        return OtpResult.failure('Nie udało się zalogować. Spróbuj ponownie.');
+        return Result.failure('Nie udało się zalogować. Spróbuj ponownie.');
       }
     } on AuthException catch (e) {
       developer.log('Błąd weryfikacji OTP: ${e.message}');
-      return OtpResult.failure(e.message);
+      return Result.failure(e.message);
     } catch (e) {
       developer.log('Inny błąd: $e');
-      return OtpResult.failure('Wystąpił nieoczekiwany błąd.');
+      return Result.failure('Wystąpił nieoczekiwany błąd.');
     }
   }
 
+  Future<Result> logOut() async{
+    try{
+      await supabase.auth.signOut();
+      //await _storage.write(key: 'authToken', value: '');
+      return Result.success();
 
+    }on AuthException catch(e){
+      developer.log('AuthException: ${e.message}');
+      return Result.failure(e.message);
+    } catch(e){
+      developer.log('Błąd przy wylogowywaniu: $e');
+      return Result.failure('Wystąpił nieoczekiwany błąd.Spróbuj ponownie.');
+    }
+  }
 
+  Future<Result> deleteAccount() async{
+    try{
+      final response = await supabase.functions.invoke('delete_user_account', body: {'name': 'Functions'});
+      if(response.status == 200){
+        return Result.success();
+      }else{
+        final errorMessage = response.data['error'] ?? 'Nieznany błąd';
+        return Result.failure(errorMessage);
+      }
 
+    }catch(e){
+      return Result.failure('Wystąpił nieoczekiwany błąd.Spróbuj ponownie.');
+    }
+  }
 
 }

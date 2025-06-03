@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ticketapp/data/service/tpay/model/transaction_model.dart';
 import 'package:ticketapp/data/service/tpay/tpay_auth_client.dart';
 
@@ -36,22 +37,28 @@ class TpayClient{
         ),
       );
 
-      print(response.data);
       return response.data['transactionId'];
 
     } on DioException catch (e) {
       if (e.response != null) {
-        print('Błąd API: ${e.response?.statusCode} - ${e.response?.data}');
+        if (kDebugMode) {
+          print('Błąd API: ${e.response?.statusCode} - ${e.response?.data}');
+        }
       } else {
-        print('Błąd połączenia: ${e.message}');
+        if (kDebugMode) {
+          print('Błąd połączenia: ${e.message}');
+        }
       }
       return null;
     } catch (e) {
-      print('Nieznany błąd: $e');
+      if (kDebugMode) {
+        print('Nieznany błąd: $e');
+      }
       return null;
     }
   }
 
+  //TODO: przeniesc ?
   Map<String,dynamic> makeData(Transaction transaction){
     return {
       "amount": transaction.amount,

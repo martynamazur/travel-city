@@ -1,4 +1,7 @@
 
+import 'dart:developer' as developer;
+
+import 'package:http/http.dart';
 import 'package:ticketapp/main.dart';
 import 'package:ticketapp/model/ticket_model.dart';
 import 'package:ticketapp/model/ticket_user.dart';
@@ -6,6 +9,7 @@ import 'package:ticketapp/model/ticket_variant.dart';
 import 'package:ticketapp/model/vehicle_type.dart';
 
 import '../../model/city.dart';
+import '../../model/validation_result.dart';
 
 class TicketRepository{
 
@@ -13,7 +17,9 @@ class TicketRepository{
   Future<List<TicketM>> getAvailableTickets(int cityId) async{
     try{
       final response = await supabase.from('ticket').select('*').eq('city_id', cityId);
-      final List<dynamic> data = response as List<dynamic>;return data.map((json) => TicketM.fromJson(json)).toList();
+      final List<dynamic> data = response as List<dynamic>;
+      print("tutdaj ${data.map((json) => TicketM.fromJson(json)).toList()}");
+      return data.map((json) => TicketM.fromJson(json)).toList();
       
     }catch(e){
       print(e);
@@ -61,15 +67,13 @@ class TicketRepository{
           .from('city_vehicle_type')
           .select('vehicle_type(id,name)')
           .eq('city_id',cityId);
-      print(response);
+
       final List<dynamic> data = response as List<dynamic>;
       return data
           .map((json) => VehicleType.fromJson(json['vehicle_type'] as Map<String, dynamic>))
           .toList();
       
     }catch(e,stackTrace){
-      print(e);
-      print(stackTrace);
       return [];
     }
   }
@@ -79,7 +83,6 @@ class TicketRepository{
       final response = await supabase.from('ticket').select().eq('id', ticketId).single();
       return TicketM.fromJson(response);
     }catch(e){
-      print('Błąd pobierania biletu: $e');
       return null;
     }
   }
@@ -101,8 +104,31 @@ class TicketRepository{
       final data = response as List<dynamic>;
       return data.map((json) => TicketM.fromJson(json)).toList();
     } catch (e) {
-      print('Błąd przy pobieraniu biletów: $e');
       return [];
+    }
+  }
+
+  Future<ValidationResult> vehicleExists(String vehicleFleetNumber, int cityId) async{
+
+    try{
+      final response = await supabase
+          .from('vehicles')
+          .select('*')
+          .eq('fleet_number', vehicleFleetNumber)
+          .eq('city_id', cityId).maybeSingle();
+
+
+
+      print('Response: $response');
+
+      if(response != null){
+        return ValidationResult.success();
+      }else{
+        return ValidationResult.failure('Ups ten pojazd nie nalezy do tego miasta');
+      }
+    }catch(e){
+      return  ValidationResult.failure('Ups sproboj ponownie');
+
     }
   }
 

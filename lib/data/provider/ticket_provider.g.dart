@@ -589,5 +589,155 @@ final getUserMostBoughTicketsProvider =
 // ignore: unused_element
 typedef GetUserMostBoughTicketsRef =
     AutoDisposeFutureProviderRef<List<TicketM>>;
+String _$vehicleExistsHash() => r'a4da6501fc9b9a3aae193132e8a4f63627d2c1a3';
+
+/// See also [vehicleExists].
+@ProviderFor(vehicleExists)
+const vehicleExistsProvider = VehicleExistsFamily();
+
+/// See also [vehicleExists].
+class VehicleExistsFamily extends Family<AsyncValue<ValidationResult>> {
+  /// See also [vehicleExists].
+  const VehicleExistsFamily();
+
+  /// See also [vehicleExists].
+  VehicleExistsProvider call({
+    required String vehicleFleetNumber,
+    required int cityId,
+  }) {
+    return VehicleExistsProvider(
+      vehicleFleetNumber: vehicleFleetNumber,
+      cityId: cityId,
+    );
+  }
+
+  @override
+  VehicleExistsProvider getProviderOverride(
+    covariant VehicleExistsProvider provider,
+  ) {
+    return call(
+      vehicleFleetNumber: provider.vehicleFleetNumber,
+      cityId: provider.cityId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'vehicleExistsProvider';
+}
+
+/// See also [vehicleExists].
+class VehicleExistsProvider
+    extends AutoDisposeFutureProvider<ValidationResult> {
+  /// See also [vehicleExists].
+  VehicleExistsProvider({
+    required String vehicleFleetNumber,
+    required int cityId,
+  }) : this._internal(
+         (ref) => vehicleExists(
+           ref as VehicleExistsRef,
+           vehicleFleetNumber: vehicleFleetNumber,
+           cityId: cityId,
+         ),
+         from: vehicleExistsProvider,
+         name: r'vehicleExistsProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$vehicleExistsHash,
+         dependencies: VehicleExistsFamily._dependencies,
+         allTransitiveDependencies:
+             VehicleExistsFamily._allTransitiveDependencies,
+         vehicleFleetNumber: vehicleFleetNumber,
+         cityId: cityId,
+       );
+
+  VehicleExistsProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.vehicleFleetNumber,
+    required this.cityId,
+  }) : super.internal();
+
+  final String vehicleFleetNumber;
+  final int cityId;
+
+  @override
+  Override overrideWith(
+    FutureOr<ValidationResult> Function(VehicleExistsRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: VehicleExistsProvider._internal(
+        (ref) => create(ref as VehicleExistsRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        vehicleFleetNumber: vehicleFleetNumber,
+        cityId: cityId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<ValidationResult> createElement() {
+    return _VehicleExistsProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is VehicleExistsProvider &&
+        other.vehicleFleetNumber == vehicleFleetNumber &&
+        other.cityId == cityId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, vehicleFleetNumber.hashCode);
+    hash = _SystemHash.combine(hash, cityId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin VehicleExistsRef on AutoDisposeFutureProviderRef<ValidationResult> {
+  /// The parameter `vehicleFleetNumber` of this provider.
+  String get vehicleFleetNumber;
+
+  /// The parameter `cityId` of this provider.
+  int get cityId;
+}
+
+class _VehicleExistsProviderElement
+    extends AutoDisposeFutureProviderElement<ValidationResult>
+    with VehicleExistsRef {
+  _VehicleExistsProviderElement(super.provider);
+
+  @override
+  String get vehicleFleetNumber =>
+      (origin as VehicleExistsProvider).vehicleFleetNumber;
+  @override
+  int get cityId => (origin as VehicleExistsProvider).cityId;
+}
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -10,13 +10,18 @@ part 'user_repository_provider.g.dart';
 UserRepository userRepository(Ref ref) {
   return  UserRepository();
 }
+@riverpod
+Future<Result> logOut(Ref ref) async {
+  return ref.read(userRepositoryProvider).logOut();
+}
 
 @riverpod
-Future<bool> sendOtp(Ref ref, {required String phoneNumber}) async {
+Future<Result> sendOtp(Ref ref, {required String phoneNumber}) async {
   return ref.read(userRepositoryProvider).sendOtp(phoneNumber);
 }
 
 @riverpod
-Future<OtpResult> verifyOtp(Ref ref,{required String phoneNumber,required String token}) async {
+Future<Result> verifyOtp(Ref ref,{required String phoneNumber,required String token}) async {
   return ref.read(userRepositoryProvider).verifyOtp(phoneNumber, token);
 }
+

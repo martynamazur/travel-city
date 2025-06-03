@@ -23,7 +23,7 @@ TicketM _$TicketMFromJson(
 /// @nodoc
 mixin _$TicketM implements DiagnosticableTreeMixin {
 
- int get id;@JsonKey(name: 'city_id') int get cityId;@JsonKey(name: 'vehicle_type_id') int get vehicleTypeId;@JsonKey(name: 'variant_id') int get variantId; String get name; int? get minutes; double get price;
+ int get id;@JsonKey(name: 'city_id') int get cityId;@JsonKey(name: 'vehicle_type_id') int get vehicleTypeId;@JsonKey(name: 'variant_id') int get variantId; String get name; dynamic get minutes; double get price;
 /// Create a copy of TicketM
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -42,12 +42,12 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TicketM&&(identical(other.id, id) || other.id == id)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.vehicleTypeId, vehicleTypeId) || other.vehicleTypeId == vehicleTypeId)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.name, name) || other.name == name)&&(identical(other.minutes, minutes) || other.minutes == minutes)&&(identical(other.price, price) || other.price == price));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TicketM&&(identical(other.id, id) || other.id == id)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.vehicleTypeId, vehicleTypeId) || other.vehicleTypeId == vehicleTypeId)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.minutes, minutes)&&(identical(other.price, price) || other.price == price));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,cityId,vehicleTypeId,variantId,name,minutes,price);
+int get hashCode => Object.hash(runtimeType,id,cityId,vehicleTypeId,variantId,name,const DeepCollectionEquality().hash(minutes),price);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
@@ -62,7 +62,7 @@ abstract mixin class $TicketMCopyWith<$Res>  {
   factory $TicketMCopyWith(TicketM value, $Res Function(TicketM) _then) = _$TicketMCopyWithImpl;
 @useResult
 $Res call({
- int id,@JsonKey(name: 'city_id') int cityId,@JsonKey(name: 'vehicle_type_id') int vehicleTypeId,@JsonKey(name: 'variant_id') int variantId, String name, int? minutes, double price
+ int id,@JsonKey(name: 'city_id') int cityId,@JsonKey(name: 'vehicle_type_id') int vehicleTypeId,@JsonKey(name: 'variant_id') int variantId, String name, dynamic minutes, double price
 });
 
 
@@ -87,7 +87,7 @@ as int,vehicleTypeId: null == vehicleTypeId ? _self.vehicleTypeId : vehicleTypeI
 as int,variantId: null == variantId ? _self.variantId : variantId // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,minutes: freezed == minutes ? _self.minutes : minutes // ignore: cast_nullable_to_non_nullable
-as int?,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as dynamic,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,
   ));
 }
@@ -99,7 +99,7 @@ as double,
 @JsonSerializable()
 
 class _Ticket with DiagnosticableTreeMixin implements TicketM {
-  const _Ticket({required this.id, @JsonKey(name: 'city_id') required this.cityId, @JsonKey(name: 'vehicle_type_id') required this.vehicleTypeId, @JsonKey(name: 'variant_id') required this.variantId, required this.name, this.minutes, required this.price});
+  const _Ticket({required this.id, @JsonKey(name: 'city_id') required this.cityId, @JsonKey(name: 'vehicle_type_id') required this.vehicleTypeId, @JsonKey(name: 'variant_id') required this.variantId, required this.name, required this.minutes, required this.price});
   factory _Ticket.fromJson(Map<String, dynamic> json) => _$TicketFromJson(json);
 
 @override final  int id;
@@ -107,7 +107,7 @@ class _Ticket with DiagnosticableTreeMixin implements TicketM {
 @override@JsonKey(name: 'vehicle_type_id') final  int vehicleTypeId;
 @override@JsonKey(name: 'variant_id') final  int variantId;
 @override final  String name;
-@override final  int? minutes;
+@override final  dynamic minutes;
 @override final  double price;
 
 /// Create a copy of TicketM
@@ -129,12 +129,12 @@ void debugFillProperties(DiagnosticPropertiesBuilder properties) {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ticket&&(identical(other.id, id) || other.id == id)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.vehicleTypeId, vehicleTypeId) || other.vehicleTypeId == vehicleTypeId)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.name, name) || other.name == name)&&(identical(other.minutes, minutes) || other.minutes == minutes)&&(identical(other.price, price) || other.price == price));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ticket&&(identical(other.id, id) || other.id == id)&&(identical(other.cityId, cityId) || other.cityId == cityId)&&(identical(other.vehicleTypeId, vehicleTypeId) || other.vehicleTypeId == vehicleTypeId)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.minutes, minutes)&&(identical(other.price, price) || other.price == price));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,cityId,vehicleTypeId,variantId,name,minutes,price);
+int get hashCode => Object.hash(runtimeType,id,cityId,vehicleTypeId,variantId,name,const DeepCollectionEquality().hash(minutes),price);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
@@ -149,7 +149,7 @@ abstract mixin class _$TicketCopyWith<$Res> implements $TicketMCopyWith<$Res> {
   factory _$TicketCopyWith(_Ticket value, $Res Function(_Ticket) _then) = __$TicketCopyWithImpl;
 @override @useResult
 $Res call({
- int id,@JsonKey(name: 'city_id') int cityId,@JsonKey(name: 'vehicle_type_id') int vehicleTypeId,@JsonKey(name: 'variant_id') int variantId, String name, int? minutes, double price
+ int id,@JsonKey(name: 'city_id') int cityId,@JsonKey(name: 'vehicle_type_id') int vehicleTypeId,@JsonKey(name: 'variant_id') int variantId, String name, dynamic minutes, double price
 });
 
 
@@ -174,7 +174,7 @@ as int,vehicleTypeId: null == vehicleTypeId ? _self.vehicleTypeId : vehicleTypeI
 as int,variantId: null == variantId ? _self.variantId : variantId // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,minutes: freezed == minutes ? _self.minutes : minutes // ignore: cast_nullable_to_non_nullable
-as int?,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as dynamic,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as double,
   ));
 }
