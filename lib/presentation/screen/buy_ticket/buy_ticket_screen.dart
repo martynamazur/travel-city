@@ -7,9 +7,9 @@ import 'package:ticketapp/presentation/screen/buy_ticket/step3_ticket_list.dart'
 import 'package:ticketapp/presentation/screen/buy_ticket/pick_amount_of_tickets.dart';
 import 'package:ticketapp/theme/app_colors.dart';
 
+import '../../../data/provider/buy_form_notifier.dart';
 import '../../../data/provider/ticket_provider.dart';
 
-import '../../../model/ticket_model.dart';
 import '../../../model/ticket_step_form.dart';
 import '../../../utils/dialog_utils.dart';
 import '../../widget/progress_bar.dart';
@@ -25,22 +25,10 @@ class BuyTicket extends ConsumerStatefulWidget {
 }
 
 class _BuyTicketState extends ConsumerState<BuyTicket> {
+
+
   final _pageController = PageController();
   final int _maxSteps = 5;
-  TicketStep _currentStep = TicketStep.chooseVehicle;
-  TicketCategoryTypes _ticketCategory = TicketCategoryTypes.none;
-  TicketM _ticket = TicketM(
-    id: 0,
-    cityId: 0,
-    vehicleTypeId: 0,
-    variantId: 0,
-    name: '',
-    minutes: 60,
-    price: 0.0,
-  );
-  int get _currentStepIndex => _currentStep.index;
-  String? _vehicleCategoryName;
-  String? _ticketType;
   late final AppLocalizations _loc;
 
   @override
@@ -54,20 +42,35 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
     _pageController.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
+    final currentStep = ref.watch(buyFormNotifierProvider.select((form) => form.currentStep));
+    final currentStepIndex = currentStep.index;
+    final ticket = ref.watch(buyFormNotifierProvider.select((form) => form.baseTicket));
     final city = ref.watch(selectedCityProvider);
+
+    ref.listen<TicketStep>(buyFormNotifierProvider.select((form) => form.currentStep), (previous, next) {
+      if (previous != next) {
+        _pageController.animateToPage(
+          next.index,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
 
     if (city == null) {
       return Scaffold(
           appBar: AppBar(
             title: Text(_loc.buyNewTicket),
           ),
-        body: SafeArea(child: Column(
-          children: [
-            ProgressBar(maxSteps: _maxSteps, currentStepIndex: _currentStepIndex),
-            ChooseCity(city)
-          ],
+        body: SafeArea(
+            child: Column(
+              children: [
+                ProgressBar(maxSteps: _maxSteps, currentStepIndex: currentStepIndex),
+                ChooseCity(city)
+              ],
         ))
       );
     }
@@ -93,50 +96,23 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
         onPopInvokedWithResult: (didPop, result) async{
           if(!didPop) {
             final shouldExit = await showExitConfirmationDialog(context);
-            if (shouldExit == true) {
-              Navigator.of(context).pop();
-            }
+            if (shouldExit == true) Navigator.of(context).pop();
           }
         },
         child: SafeArea(
             child: Column(
               children: [
-                ProgressBar(maxSteps: _maxSteps, currentStepIndex: _currentStepIndex),
+                ProgressBar(maxSteps: _maxSteps, currentStepIndex: currentStepIndex),
                 Expanded(
                   child: PageView(
                     controller: _pageController,
-                    onPageChanged: (int index) => setState(() => _currentStep = TicketStep.values[index]),
+                    onPageChanged: (int index)  =>ref.read(buyFormNotifierProvider.notifier).setCurrentStep(TicketStep.values[index]),
                     physics: NeverScrollableScrollPhysics(),
                     children: [
-                      TicketType(
-                          city,
-                          (vehicleName){
-                            setState(() {
-                              _vehicleCategoryName = vehicleName;
-                            });
-                            _nextStep();
-                          }
-                      ),//city, vehicles
-                      TicketCategory(
-                          city.id,
-                          (categoryId, ticketVariant){
-                            setState(() {
-                              _ticketCategory = TicketCategoryTypes.values.elementAt(categoryId);
-                              _ticketType = ticketVariant;
-                              _nextStep();
-                            });
-                          }
-                      ),
-                      TicketList(
-                          city,
-                          _ticketCategory.index,
-                          (ticket){
-                            setState(() {
-                              _ticket = ticket;
-                              _nextStep();
-                            });}
-                      ),
-                      PickAmountOfTickets(ticket: _ticket)
+                      TicketType(city),//city, vehicles
+                      TicketCategory(city.id),
+                      TicketList(city),
+                      PickAmountOfTickets(ticket: ticket)
                     ],
                   ),
                 ),
@@ -147,31 +123,21 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
     );
   }
 
-  void _nextStep() {
-    setState(() {
-      if (_currentStep.index + 1 < TicketStep.values.length) {
-        _currentStep = TicketStep.values[_currentStep.index + 1];
-      }
-    });
-    _pageController.nextPage(
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
   String _buildTitle(){
     final city = ref.watch(selectedCityProvider);
+    final vehicleCategoryName = ref.watch(buyFormNotifierProvider.select((form) => form.vehicleName));
+    final ticketVariantName = ref.watch(buyFormNotifierProvider.select((form) => form.variantName));
 
     if (city == null) return '';
 
     final buffer = StringBuffer(city.name);
 
-    if(_vehicleCategoryName != null){
-      buffer.write(' - $_vehicleCategoryName');
+    if(vehicleCategoryName.isNotEmpty){
+      buffer.write(' - $vehicleCategoryName');
     }
 
-    if(_ticketType != null){
-      buffer.write(' - $_ticketType');
+    if(ticketVariantName.isNotEmpty){
+      buffer.write(' - $ticketVariantName');
     }
 
     /*

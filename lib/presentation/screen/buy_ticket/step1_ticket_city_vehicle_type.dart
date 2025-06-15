@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../data/provider/buy_form_notifier.dart';
 import '../../../data/provider/ticket_provider.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../model/city.dart';
@@ -9,8 +10,7 @@ import 'choose_city.dart';
 
 class TicketType extends ConsumerStatefulWidget {
   final City city;
-  final void Function(String) onCategorySelected;
-  const TicketType( this.city, this.onCategorySelected, {super.key});
+  const TicketType( this.city, {super.key});
 
   @override
   ConsumerState createState() => _TicketTypeState();
@@ -47,8 +47,10 @@ class _TicketTypeState extends ConsumerState<TicketType> {
                   final vehicleType = vehicleList[index];
                   return ListShadowTile(
                     text: vehicleType.name,
-                    onTap: () => widget.onCategorySelected(vehicleType.name),
-
+                    onTap: ()  async{
+                      ref.read(buyFormNotifierProvider.notifier).updateVehicleName(vehicleType.name);
+                      ref.read(buyFormNotifierProvider.notifier).goToNextStep();
+                    },
                   );
                 },
               );

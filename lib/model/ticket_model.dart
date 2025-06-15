@@ -24,4 +24,17 @@ abstract class TicketM with _$TicketM {
 
   factory TicketM.fromJson(Map<String, dynamic> json) =>
       _$TicketFromJson(json);
+
+
+  factory TicketM.empty() => const TicketM(
+      id: 0,
+      cityId: 0,
+      vehicleTypeId: 0,
+      variantId: 0,
+      name: 'name',
+      minutes: 0,
+      price: 0
+  );
+
+
 }

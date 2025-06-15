@@ -32,6 +32,7 @@ class _PickAmountOfTicketsState extends State<PickAmountOfTickets> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
           child: Padding(
